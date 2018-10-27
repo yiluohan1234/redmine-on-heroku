@@ -1,0 +1,52 @@
+{
+    "name": "Remine 3.4 on Heroku",
+    "description": "The Redmine project management application, made deployable to Heroku.",
+    "keywords": [
+        "project management",
+        "redmine",
+        "heroku"
+    ],
+    "repository": "https://github.com/yiluohan1234/redmine-on-heroku",
+    "env": {
+        "SECRET_TOKEN": {
+            "description": "A secret key for verifying the integrity of signed cookies.",
+            "generator": "secret"
+        },
+        "MAIL_DRIVER": {
+          "description": "Mail driver (optional).",
+          "value": "smtp",
+          "required": false
+        },
+        "MAIL_HOST": {
+          "description": "Host of the mail server.",
+          "value": "smtp.qq.com",
+          "required": false
+        },
+        "MAIL_PORT": {
+          "description": "Port of mail server.",
+          "value": "25",
+          "required": false
+        },
+        "MAIL_DOMAIN": {
+          "description": "Host of the mail server.",
+          "value": "qq.com",
+          "required": false
+        },
+        "MAIL_USERNAME": {
+          "description": "Mail server username.",
+          "required": false
+        },
+        "MAIL_PASSWORD": {
+          "description": "Mail server password.",
+          "required": false
+        },
+
+    },
+    "scripts": {
+        "postdeploy": "bundle exec rake db:migrate"
+    },
+    "addons": [
+        "heroku-postgresql",
+        "sendgrid"
+    ]
+}
